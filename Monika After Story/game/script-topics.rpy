@@ -4450,6 +4450,28 @@ label monika_fruits:
     m "Just teasing you, [player]~"
     return
 
+init 5 python:
+    #This is a list of keywords for this topic
+    for key in ['library wars' , 'library' , 'Light Novel']:
+        monika_topics.setdefault(key,[])
+        monika_topics[key].append('monika_library_wars')
+    monika_random_topics.append('monika_library_wars')
+
+label monika_library_wars:
+    m 3a "Hey [player]?"
+    m 3b "Have you ever heard of a series called Library Wars?"
+    m 3g "It's a light novel about the government passing a law that censors any media deemed to be potentially harmful."
+    m 3f"This of course includes books."
+    m 3d"but, the local governments fight back to protect their libraries."
+    m 3b"The book even had a manga, an anime and three movies!"
+    m 3d" Hey, [player]?"
+     menu:
+        m 3f"Would you protect me if the government were to take me away?"
+        "Yes.":
+            m 3p"..."
+	    m 3k"This is why I love you [Player]~"
+    return
+
 ##################
 #Incomplete ideas#
 ##################
