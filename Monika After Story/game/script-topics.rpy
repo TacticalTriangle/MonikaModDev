@@ -49,7 +49,21 @@ init 11 python:
     #If there are no unseen topics, you can repeat seen ones
     if len(monika_random_topics) == 0:
         monika_random_topics=list(all_random_topics)
+        
+#Timed menu code
+transform alpha_dissolve:
+    alpha 0.0
+    linear 0.5 alpha 1.0
+    on hide:
+        linear 0.5 alpha 0
 
+screen countdown:
+    timer 1 repeat True action If(time > 0, true=SetVariable('time', time - 1), false=[Hide('countdown'), Jump(timer_jump)])
+    if time <= 2:
+        text str(time) xpos .1 ypos .1 color "#FF0000" at alpha_dissolve
+    else:
+        text str(time) xpos .1 ypos .1 at alpha_dissolve
+        
 #BEGIN ORIGINAL TOPICS
 
 #Use this topic as an example
